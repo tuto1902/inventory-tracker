@@ -11,11 +11,11 @@ return new class extends Migration {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('sku');
+            $table->string('sku')->unique();
+            $table->string('barcode');
             $table->string('description')->nullable();
-            $table->decimal('price');
-            $table->integer('stock_quantity');
-            $table->foreignIdFor(Supplier::class)->constrained()->restrictOnDelete();
+            $table->integer('price');
+            $table->decimal('stock_quantity');
             $table->timestamps();
             $table->softDeletes();
         });
