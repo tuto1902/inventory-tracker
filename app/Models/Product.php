@@ -17,6 +17,7 @@ class Product extends Model
         'name',
         'sku',
         'description',
+        'barcode',
         'price',
         'stock_quantity',
         'supplier_id',
@@ -24,6 +25,6 @@ class Product extends Model
 
     public function suppliers(): BelongsToMany
     {
-        return $this->belongsToMany(Supplier::class);
+        return $this->belongsToMany(Supplier::class)->withPivot('supplier_sku');
     }
 }
